@@ -1,9 +1,25 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
+
+let Vote=0;
 
 class HornedBeasts extends React.Component {
 
 
-   
+  constructor (props){
+
+    super(props);
+    this.state = {
+      votesForImage : 0,
+    }
+  }
+    votingFunction = () => {
+
+      this.setState({
+        votesForImage : this.state.votesForImage +1    })
+    }
+
+
       // Props are attributes we are inheriting "extending" from the React.Component Class
       // the props are Objects
     
@@ -12,9 +28,21 @@ class HornedBeasts extends React.Component {
         console.log('props: ', this.props);
         return (
           <div>
-            <h2>{this.props.headline}</h2>
-            <p>{this.props.paragraph}</p>
-            <img src={this.props.Url} alt="" />
+          
+            <Card style={{ width: '18rem' }}>
+  <Card.Img onClick={this.votingFunction} variant="top" src={this.props.image_url} />
+  <Card.Body>
+    <Card.Title>{this.props.title}</Card.Title>
+    <Card.Text>
+    {this.props.description}
+    </Card.Text>
+
+    <Card.Text>
+    <p>Number Of votes{this.state.votesForImage}</p>
+    </Card.Text>
+  </Card.Body>
+</Card>
+
           </div>
         )
       }
