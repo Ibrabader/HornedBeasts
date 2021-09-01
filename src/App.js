@@ -3,65 +3,78 @@ import Header from './compnents/header';
 import Main from './compnents/main';
 import Footer from './compnents/footer';
 import SelectedBeast from './compnents/SelectedBeast ';
-import cardData from './assets/data.json';
-
+import photoData from './assets/data.json';
+import Form from 'react-bootstrap/Form'
 class App extends React.Component {
 
-  constructor(props){
-    super (props);
-    this.state={
-      show : false,
-      title: '',
-      selctedImg : {}     
-    }
+      constructor(props){
+          super (props);
+          this.state={
+             data : photoData,
+             show : false,
+             title: '',
+             selctedImg : {},     
+                          }
   }
-  takeData = (title) =>{
+     takeData = (title) =>{
 
-    // let filteredData = cardData.find(elem => {
+       let filteredData = photoData.filter(elem => {
       
-    //   return (elem.title == title)
+        return (elem.title == title)
       
-    // })
-    // ---------------------------------------
+    });
 
-    let filteredData = cardData.filter(elem => {
-      
-      return (elem.title == title)
-      
-    })
-    console.log(filteredData);
-    // ------------------------------------
-    this.setState({
+      this.setState({
       selctedImg: filteredData[0],
       title: title,
 
-    })
+    });
   }
-  handleClose = () => {
+      handleClose = () => {
     
-    this.setState ({
-      show: !this.state.show,
+         this.setState ({
+          show: !this.state.show,
       
-    })
-    // alert('from handelclose')
+       });
   }
-  render (){
+
+
+      update = (galary) =>{
+
+           this.setState ({
+            data : galary 
+            }); 
+
+      } 
+      render (){
     
-    return (
-      <div>
-        <Header />
-        <SelectedBeast 
-        cardsBeasts = {cardData}
-        show = {this.state.show}
-        selctedImg ={this.state.selctedImg}
-        handleClose = {this.handleClose} />
-        <Main 
-        takeData = {this.takeData}
-        cardsBeasts = {cardData}
-        handleClose = {this.handleClose} />
-        <Footer />
-      </div>
-    )
+          return (
+        <div>
+          <Header />
+
+          <SelectedBeast 
+
+          cardsBeasts = {this.galary}
+          show = {this.state.show}
+          selctedImg ={this.state.selctedImg}
+          handleClose = {this.handleClose} 
+          
+          />
+
+          <Main 
+
+          update = { this.update}
+          takeData = {this.takeData}
+          cardsBeasts = {photoData}
+          handleClose = {this.handleClose}
+          
+          />
+
+          <Footer />
+
+          
+        </div>
+    );
   }
 }
 

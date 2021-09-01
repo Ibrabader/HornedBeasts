@@ -12,7 +12,6 @@ class SelectedBeast extends React.Component {
 
 
     render() {
-        console.log(this.props)         
             
             return (
 
@@ -30,12 +29,6 @@ class SelectedBeast extends React.Component {
                         </Modal.Body>
                     </div>
                     <Modal.Footer>
-                        {/* <Button onClick={() => this.props.handleClose()}>
-                            Close
-                        </Button>
-                        <Button onClick={() => this.props.handleClose()}>
-                            Save Changes
-                        </Button> */}
                     </Modal.Footer>
                 </Modal>
             </div>
