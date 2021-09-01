@@ -1,6 +1,6 @@
 import React from 'react';
 import HornedBeasts from './horned-beasts';
-
+import data from '../assets/data.json';
 class Main extends React.Component {
 
   render() {
@@ -13,6 +13,8 @@ class Main extends React.Component {
 title={value.title}
 description={value.description}
 image_url={value.image_url}
+handleClose = {this.props.handleClose}
+// handleClose={this.props.handleClose}
 />
       );
     })
@@ -24,7 +26,7 @@ image_url={value.image_url}
 
 
       
-    )
+    );
   }
 }
 

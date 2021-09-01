@@ -2,7 +2,6 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-let Vote=0;
 
 class HornedBeasts extends React.Component {
 
@@ -19,7 +18,9 @@ class HornedBeasts extends React.Component {
 
       this.setState({
         votesForImage : this.state.votesForImage +1    })
-    }
+    this.props.handleClose();
+    
+      }
 
 
       render() {
